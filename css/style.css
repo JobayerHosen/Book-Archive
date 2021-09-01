@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ddf;
+}
+
+.search-results-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 0 20px 0 #00000066;
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+.card .card-title {
+    font-size: 1.5rem;
+    max-height: 5.5rem;
+    overflow: hidden;
+}
+
+#placeholder {
+    display: none;
+}
+#placeholder.show {
+    display: block;
+}
+#next {
+    display: none;
+}
+#next.show {
+    display: block;
+    margin-left: auto;
+}
