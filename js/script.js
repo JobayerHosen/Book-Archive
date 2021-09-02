@@ -36,7 +36,7 @@ const loadSearchResult = (data) => {
     // SHOW STATUS
     const status = document.getElementById("status");
     if (!data.numFound || !data) {
-        status.innerHTML = `<div class="alert alert-danger" role="alert">Now Book Found.</div>`;
+        status.innerHTML = `<div class="alert alert-danger" role="alert">No Book Found.</div>`;
         togglePlaceHolder(false);
         return;
     }
