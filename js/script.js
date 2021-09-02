@@ -11,12 +11,14 @@ const getSearchText = (offset = 0) => {
     document.getElementById(
         "search-feedback"
     ).innerHTML = `Showing Results for: <span class="fw-bold">${searchField.value}</span>`;
+
     searchBook(url);
 
     searchField.value = "";
     togglePlaceHolder(true);
 };
 
+/*Get API data in json format*/
 const searchBook = (url) => {
     fetch(url)
         .then((response) => response.json())
@@ -52,6 +54,7 @@ const loadSearchResult = (data) => {
         card.className = "col-12 col-md-6 col-lg-4";
 
         const author = book.author_name?.length > 0 ? book.author_name[0] : "Unknown";
+        const publisher = book.publisher ? `Publisher: ${book.publisher.join(" | ")}` : "";
         const firstPublished = book.first_publish_year ? `First Published in ${book.first_publish_year}` : "";
         const img = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : "cover-placeholder.png";
 
@@ -66,6 +69,9 @@ const loadSearchResult = (data) => {
                         <h5 class="card-title" title="${book.title}">${book.title}</h5>
                         <p class="card-text" title="${book.author_name ? book.author_name.join(" | ") : ""}">
                             Author: ${author}
+                        </p>
+                        <p class="card-text">
+                            ${publisher}
                         </p>
                         <p class="card-text"><small class="text-muted">${firstPublished}</small></p>
                     </div>
