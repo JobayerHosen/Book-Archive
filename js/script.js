@@ -6,7 +6,7 @@ const getSearchText = (offset = 0) => {
     query = !offset ? searchField.value : query;
     const startFrom = offset ? `&offset=${offset}` : "";
 
-    const url = `http://openlibrary.org/search.json?q=${query}${startFrom}`;
+    const url = `https://openlibrary.org/search.json?q=${query}${startFrom}`;
 
     document.getElementById(
         "search-feedback"
@@ -51,6 +51,8 @@ const loadSearchResult = (data) => {
         const card = document.createElement("div");
         card.className = "col-12 col-md-6 col-lg-4";
 
+        const author = book.author_name?.length > 0 ? book.author_name[0] : "Unknown";
+        const firstPublished = book.first_publish_year ? `First Published in ${book.first_publish_year}` : "";
         const img = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : "cover-placeholder.png";
 
         card.innerHTML = `
@@ -63,9 +65,9 @@ const loadSearchResult = (data) => {
                     <div class="card-body d-flex flex-column justify-content-between h-100">
                         <h5 class="card-title" title="${book.title}">${book.title}</h5>
                         <p class="card-text" title="${book.author_name ? book.author_name.join(" | ") : ""}">
-                            Author: ${book.author_name?.[0]}
+                            Author: ${author}
                         </p>
-                        <p class="card-text"><small class="text-muted">First Published in ${book?.first_publish_year}</small></p>
+                        <p class="card-text"><small class="text-muted">${firstPublished}</small></p>
                     </div>
                 </div>
             </div>
